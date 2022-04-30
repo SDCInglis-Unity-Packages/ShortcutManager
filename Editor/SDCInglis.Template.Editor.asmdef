@@ -1,0 +1,16 @@
+{
+    "name": "SDCInglis.Template.Editor",
+    "rootNamespace": "SDCInglis.Template.Editor",
+    "references": [
+        "SDCInglis.Template"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
