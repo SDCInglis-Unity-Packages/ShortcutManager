@@ -1,6 +1,5 @@
 {
     "name": "SDCInglis.Template.Tests",
-    "rootNamespace": "SDCInglis.Template.Tests",
     "references": [
         "SDCInglis.Template",
         "UnityEngine.TestRunner",

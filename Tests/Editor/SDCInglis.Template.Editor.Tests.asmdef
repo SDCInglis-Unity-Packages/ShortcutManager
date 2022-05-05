@@ -1,6 +1,5 @@
 {
     "name": "SDCInglis.Template.Editor.Tests",
-    "rootNamespace": "SDCInglis.Template.Editor.Tests",
     "references": [
         "SDCInglis.Template.Editor",
         "SDCInglis.Template",
