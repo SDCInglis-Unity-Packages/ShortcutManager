@@ -2,7 +2,7 @@
   "name": "com.sdcinglis.template",
   "displayName": "Unity Package Template",
   "version": "0.0.0",
-  "unity": "2020.3",
+  "unity": "2021.3",
   "description": "Template for New Unity Packages",
   "dependencies": { },
   "author": {
