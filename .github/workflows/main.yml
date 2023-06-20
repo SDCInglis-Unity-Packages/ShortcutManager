@@ -1,0 +1,48 @@
+name: Run Unit Tests
+
+on:
+  push:
+    paths:
+      - .github/workflows/**
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check_duplicate:
+    name: Check for Duplicate Actions
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v5
+        with:
+          concurrent_skipping: 'same_content_newer'
+          skip_after_successful_duplicate: 'true'
+          cancel_others: 'true'
+          
+  run_unit_tests:
+    name: Run Unit Tests
+    needs: check_duplicate
+    if: needs.check_duplicate.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.event.repository.name }}/Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      - name: Run Tests
+        uses: game-ci/unity-test-runner@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: ${{ github.event.repository.name }}
+          testMode: EditMode
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
