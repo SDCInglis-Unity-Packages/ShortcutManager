@@ -1,13 +1,12 @@
-# Changelog
+# Change Log
+All notable changes to this project will be documented in this file.
 
-## Unreleased
+The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-### Fixed
-
+## [Unreleased] - yyyy-mm-dd
 ### Added
-
-### Removed
-
 ### Changed
-
-### Known Issues
+### Deprecated
+### Removed
+### Fixed
+### Security
