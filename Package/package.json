@@ -8,5 +8,8 @@
   "author": {
     "name": "Scott Inglis",
     "email": "sdcinglis@gmail.com"
+  },
+  "publishConfig": {
+    "registry": "http://rapidash.local:4873/"
   }
 }
