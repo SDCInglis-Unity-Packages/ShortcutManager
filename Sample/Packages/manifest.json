@@ -37,5 +37,14 @@
   },
   "testables": [
     "com.sdcinglis.template"
+  ],
+  "scopedRegistries": [
+    {
+      "name": "GitHub Packages",
+      "url": "https://npm.pkg.github.com/@SDCInglis-Unity-Packages",
+      "scopes": [
+        "com.sdcinglis"
+      ]
+    }
   ]
 }
