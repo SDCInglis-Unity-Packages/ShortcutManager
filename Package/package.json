@@ -9,7 +9,8 @@
     "name": "Scott Inglis",
     "email": "sdcinglis@gmail.com"
   },
-  "publishConfig": {
-    "registry": "http://rapidash.local:4873/"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SDCInglis-Unity-Packages/Template"
   }
 }

@@ -3,29 +3,21 @@ name: Run Unit Tests
 on:
   push:
     paths:
-      - .github/workflows/**
+      - .github/workflows/test.yml
   pull_request:
   workflow_dispatch:
 
-jobs:
-  check_duplicate:
-    name: Check for Duplicate Actions
-    runs-on: ubuntu-latest
-    outputs:
-      should_skip: ${{ steps.skip_check.outputs.should_skip }}
-    steps:
-      - id: skip_check
-        uses: fkirc/skip-duplicate-actions@v5
-        with:
-          concurrent_skipping: 'same_content_newer'
-          skip_after_successful_duplicate: 'true'
-          cancel_others: 'true'
-          
+jobs:  
   run_unit_tests:
     name: Run Unit Tests
-    needs: check_duplicate
-    if: needs.check_duplicate.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        unityVersion:
+          - 2021.3.27f1
+          - 2022.3.2f1
+        testMode:
+          - All
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -43,6 +35,7 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          testMode: ${{ matrix.testMode }}
+          unityVersion: ${{ matrix.unityVersion }}
           projectPath: ${{ github.event.repository.name }}
-          testMode: EditMode
           githubToken: ${{ secrets.GITHUB_TOKEN }}

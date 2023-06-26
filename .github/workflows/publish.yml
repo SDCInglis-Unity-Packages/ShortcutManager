@@ -1,0 +1,24 @@
+name: Publish Package
+
+on:  
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    name: Publish to GitHub Packages
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Package
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@${{ github.repository_owner }}'
+      - run: npm publish --registry=https://npm.pkg.github.com/@${{ github.repository_owner }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
