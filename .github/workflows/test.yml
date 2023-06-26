@@ -16,26 +16,35 @@ jobs:
         unityVersion:
           - 2021.3.27f1
           - 2022.3.2f1
-        testMode:
-          - All
     steps:
+      - name: Get Repository Name
+        run: |
+          echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
+
       - name: Checkout Repository
         uses: actions/checkout@v2
 
       - name: Cache
         uses: actions/cache@v2
         with:
-          path: ${{ github.event.repository.name }}/Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
+          path: ${{ env.REPO_NAME }}/Library
+          key: Library-${{ matrix.unityVersion }}
+          restore-keys: Library-
+
+      # - name: Authenticate UPM
+      #   run: |
+      #     mkdir /home/runner/work/_temp/_github_home
+      #     cd /home/runner/work/_temp/_github_home
+      #     echo "[npmAuth.\"https://npm.pkg.github.com/@${{ github.repository_owner }}\"]" >> .upmconfig.toml
+      #     echo "token = \"${{ secrets.PACKAGE_TOKEN }}\"" >> .upmconfig.toml
+      #     echo "alwaysAuth = true" >> .upmconfig.toml
 
       - name: Run Tests
         uses: game-ci/unity-test-runner@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          testMode: ${{ matrix.testMode }}
+          testMode: All
           unityVersion: ${{ matrix.unityVersion }}
-          projectPath: ${{ github.event.repository.name }}
+          projectPath: ${{ env.REPO_NAME }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}

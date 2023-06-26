@@ -20,15 +20,26 @@ Also update the repository URL in package.json
 - Rename Sample folder
 
 ### Add Unity License to Github Action Secrets
+- Go to https://github.com/{YOUR_GITHUB_REPO}/settings/actions
+- Set "Workflow permissions" to "Read and write permissions"
 - Go to https://github.com/{YOUR_GITHUB_REPO}/settings/secrets/actions
 - Add a new secret called UNITY_LICENSE
 - Copy the value from Unity_v2019.x.ulf
+- Add a new veriable called PROJECT_DIRECTORY
+- Set the value to the name of the project directory in the root
+
+### Update Test Workflow
+- Go to .github/workflows/test.yml
+- Update the unityVersion matrix as needed
+- If this package or project depends on other com.sdcinglis packages:
+  - Uncomment the "Authenticate UPM" step
+  - Go to each dependent package in GitHub, open the Package Settings and add your new repository to the "Manage Actions access" section
 
 ## Releasing an Update
 - Update Package/changelog.md
 - Navigate to the Package directory in command line
-- - Make sure that there is a folder named Projects/.git
+  - Make sure that there is a folder named Package/.git
 - npm version patch/minor/major
 - npm publish
+- cd ..
 - git push origin --tags
-- Navigate to GitHub and make a new release from the new tag
