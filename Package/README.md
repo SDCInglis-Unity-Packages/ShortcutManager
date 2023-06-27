@@ -25,8 +25,6 @@ Also update the repository URL in package.json
 - Go to https://github.com/{YOUR_GITHUB_REPO}/settings/secrets/actions
 - Add a new secret called UNITY_LICENSE
 - Copy the value from Unity_v2019.x.ulf
-- Add a new veriable called PROJECT_DIRECTORY
-- Set the value to the name of the project directory in the root
 
 ### Update Test Workflow
 - Go to .github/workflows/test.yml
