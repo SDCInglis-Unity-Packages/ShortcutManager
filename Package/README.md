@@ -24,16 +24,20 @@ Also update the repository URL in package.json
 - Set "Workflow permissions" to "Read and write permissions"
 - Go to https://github.com/{YOUR_GITHUB_REPO}/settings/secrets/actions
 - Add a new secret called UNITY_LICENSE
-- Copy the value from Unity_v2019.x.ulf
+- Copy the value from "Unity_v2019.x.ulf" in BitWarden
 
 ### Update Test Workflow
 - Go to .github/workflows/test.yml
 - Update the unityVersion matrix as needed
 - If this package or project depends on other com.sdcinglis packages:
   - Uncomment the "Authenticate UPM" step
-  - Go to each dependent package in GitHub, open the Package Settings and add your new repository to the "Manage Actions access" section
+  - Go to https://github.com/{YOUR_GITHUB_REPO}/settings/secrets/actions
+  - Add a new secret called PACKAGE_TOKEN
+  - Copy the value from "GitHub PAT - read:packages" in BitWarden
 
-## Releasing an Update
+## Publishing to Rapidash/GitHub Registry (Subject to Change)
+- Make sure the default NPM registry is set to Rapidash
+  - npm config set --registry=http://rapidash.local:4873/
 - Update Package/changelog.md
 - Navigate to the Package directory in command line
   - Make sure that there is a folder named Package/.git
