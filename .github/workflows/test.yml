@@ -40,6 +40,7 @@ jobs:
       #     echo "alwaysAuth = true" >> .upmconfig.toml
 
       - name: Run Tests
+        id: tests
         uses: game-ci/unity-test-runner@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -48,3 +49,11 @@ jobs:
           unityVersion: ${{ matrix.unityVersion }}
           projectPath: ${{ env.REPO_NAME }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          customParameters: -coverageOptions useProjectSettings
+
+      # - name: Upload Coverage Report
+      #   uses: actions/upload-artifact@v2
+      #   if: always()
+      #   with:
+      #     name: Coverage Report
+      #     path: ${{ steps.tests.outputs.coveragePath }}
