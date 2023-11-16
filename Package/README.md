@@ -2,6 +2,12 @@
 
 ## Setting Up a New Package
 
+### Track Template Remote
+- `git remote add template git@github.com:SDCInglis-Unity-Packages/Unity-Package-Template.git`
+- `git fetch template`
+- `git remote set-url --push template no_push`
+- `git rebase --onto MOST_RECENT_TEMPLATE_SHA PACKAGE_INITIAL_SHA main`
+
 ### Replace "Template" Everywhere
 - README.md
 - Package/package.json
