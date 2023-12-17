@@ -30,7 +30,9 @@ Also update the repository URL in package.json
 - Set "Workflow permissions" to "Read and write permissions"
 - Go to https://github.com/{YOUR_GITHUB_REPO}/settings/secrets/actions
 - Add a new secret called UNITY_LICENSE
-- Copy the value from "Unity_v2019.x.ulf" in BitWarden
+- Copy the value from "Unity_lic.ulf" in BitWarden
+- Add a new secret called UNITY_EMAIL with your Unity ID email
+- Add a new secret called UNITY_PASSWORD with your Unity ID password
 
 ### Update Test Workflow
 - Go to .github/workflows/test.yml
