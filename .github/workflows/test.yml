@@ -1,9 +1,6 @@
 name: Run Unit Tests
 
 on:
-  push:
-    paths:
-      - .github/workflows/test.yml
   pull_request:
   workflow_dispatch:
 
@@ -12,6 +9,7 @@ jobs:
     name: Run Unit Tests
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         unityVersion:
           - 2021.3.32f1
@@ -19,17 +17,18 @@ jobs:
     steps:
       - name: Get Repository Name
         run: |
-          echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
+          echo "PROJECT_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
 
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
-          path: ${{ env.REPO_NAME }}/Library
-          key: Library-${{ matrix.unityVersion }}
-          restore-keys: Library-
+          path: ${{ env.PROJECT_NAME }}/Library
+          key: Library-${{ env.PROJECT_NAME }}
+          restore-keys: |
+            Library-
 
       # - name: Authenticate UPM
       #   run: |
@@ -49,13 +48,21 @@ jobs:
         with:
           testMode: All
           unityVersion: ${{ matrix.unityVersion }}
-          projectPath: ${{ env.REPO_NAME }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectPath: ${{ env.PROJECT_NAME }}
+          checkName: Test Results (${{ matrix.unityVersion }})
           customParameters: -coverageOptions useProjectSettings
 
-      # - name: Upload Coverage Report
-      #   uses: actions/upload-artifact@v2
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Test Results (${{ matrix.unityVersion }})
+          path: ${{ steps.tests.outputs.artifactsPath }}
+
+      # - name: Upload Coverage Results
+      #   uses: actions/upload-artifact@v4
       #   if: always()
       #   with:
-      #     name: Coverage Report
+      #     name: Coverage Results (${{ matrix.unityVersion }})
       #     path: ${{ steps.tests.outputs.coveragePath }}
