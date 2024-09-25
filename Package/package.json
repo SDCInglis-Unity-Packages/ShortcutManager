@@ -1,9 +1,9 @@
 {
-  "name": "com.sdcinglis.template",
-  "displayName": "Unity Package Template",
+  "name": "com.sdcinglis.shortcutmanager",
+  "displayName": "Shortcut Manager",
   "version": "0.0.0",
-  "unity": "2021.3",
-  "description": "Template for New Unity Packages",
+  "unity": "6000.0",
+  "description": "Shortcut Management",
   "dependencies": { },
   "author": {
     "name": "Scott Inglis",
@@ -11,6 +11,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SDCInglis-Unity-Packages/Template"
+    "url": "https://github.com/SDCInglis-Unity-Packages/ShortcutManager"
   }
 }

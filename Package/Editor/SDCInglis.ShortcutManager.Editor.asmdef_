@@ -1,8 +1,8 @@
 {
-    "name": "SDCInglis.Template.Editor",
-    "rootNamespace": "SDCInglis.Template.Editor",
+    "name": "SDCInglis.ShortcutManager.Editor",
+    "rootNamespace": "SDCInglis.ShortcutManager.Editor",
     "references": [
-        "SDCInglis.Template"
+        "SDCInglis.ShortcutManager"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,38 +1,4 @@
-# Unity Package Template
-
-## Setting Up a New Package
-
-### Track Template Remote
-- `git remote add template git@github.com:SDCInglis-Unity-Packages/Unity-Package-Template.git`
-- `git fetch template`
-- `git remote set-url --push template no_push`
-- `git rebase --onto MOST_RECENT_TEMPLATE_SHA PACKAGE_INITIAL_SHA main`
-
-### Replace "Template" Everywhere
-- README.md
-- Package/package.json
-- Package/Editor/SDCInglis.Template.Editor.asmdef
-- Package/Runtime/SDCInglis.Template.asmdef
-- Package/Tests/Editor/SDCInglis.Template.Editor.Tests.asmdef
-- Package/Tests/Runtime/SDCInglis.Template.Tests.asmdef
-- Sample/Packages/manifest.json
-
-For Assembly Definition files make sure to update the names as well as the contents of the files
-
-Also update the repository URL in package.json
-
-### Rename Sample Project
-- Update productName in Sample/ProjectSettings/ProjectSettings.asset
-- Rename Sample folder
-
-### Add Unity License to Github Action Secrets
-- Go to https://github.com/{YOUR_GITHUB_REPO}/settings/actions
-- Set "Workflow permissions" to "Read and write permissions"
-- Go to https://github.com/{YOUR_GITHUB_REPO}/settings/secrets/actions
-- Add a new secret called UNITY_LICENSE
-- Copy the value from "Unity_lic.ulf" in BitWarden
-- Add a new secret called UNITY_EMAIL with your Unity ID email
-- Add a new secret called UNITY_PASSWORD with your Unity ID password
+# Shortcut Manager
 
 ### Update Test Workflow
 - Go to .github/workflows/test.yml

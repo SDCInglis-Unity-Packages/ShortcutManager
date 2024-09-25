@@ -1,7 +1,8 @@
 {
-    "name": "SDCInglis.Template.Tests",
+    "name": "SDCInglis.ShortcutManager.Editor.Tests",
     "references": [
-        "SDCInglis.Template",
+        "SDCInglis.ShortcutManager.Editor",
+        "SDCInglis.ShortcutManager",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

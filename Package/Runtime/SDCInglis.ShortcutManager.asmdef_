@@ -1,6 +1,6 @@
 {
-    "name": "SDCInglis.Template",
-    "rootNamespace": "SDCInglis.Template",
+    "name": "SDCInglis.ShortcutManager",
+    "rootNamespace": "SDCInglis.ShortcutManager",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
