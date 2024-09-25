@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.sdcinglis.template": {
+    "com.sdcinglis.shortcutmanager": {
       "version": "file:../../Package",
       "depth": 0,
       "source": "local",
