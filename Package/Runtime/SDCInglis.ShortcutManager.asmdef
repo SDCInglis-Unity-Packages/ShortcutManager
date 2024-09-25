@@ -1,7 +1,9 @@
 {
     "name": "SDCInglis.ShortcutManager",
     "rootNamespace": "SDCInglis.ShortcutManager",
-    "references": [],
+    "references": [
+        "Unity.InputSystem"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
